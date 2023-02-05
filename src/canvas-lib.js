@@ -31,38 +31,28 @@ export default function canvasSetup(width, height) {
         else ctx.strokeRect(x, y, width, height)
     }
 
-    //fun drawCircle(xCenter: Int, yCenter: Int, radius: Int, color: Int = BLACK, thickness: Int = 0)
-    function drawCircle(x, y, width, height, color = colors.BLACK, thickness = 0){
+    function drawCircle(xCenter, yCenter, radius, color = colors.BLACK, thickness = 0){
         ctx.lineWidth = thickness;
         ctx.strokeStyle = color;
-        if (thickness == 0) ctx.fillRect(x, y, width, height)
-        else ctx.strokeRect(x, y, width, height)        
+        ctx.beginPath()
+        ctx.arc(xCenter, yCenter, radius, 0, 2 * Math.PI);
+        ctx.stroke();        
     }
 
-    //fun drawArc(xCenter: Int, yCenter: Int, radius: Int, startAng: Int, endAng: Int = 360, color: Int = BLACK, thickness: Int = 0)
-    function drawArc(x, y, width, height, color = colors.BLACK, thickness = 0){
+    function drawArc(xCenter, yCenter, radius, startAng, endAng , color = colors.BLACK, thickness = 0){
         ctx.lineWidth = thickness;
         ctx.strokeStyle = color;
-        if (thickness == 0) ctx.fillRect(x, y, width, height)
-        else ctx.strokeRect(x, y, width, height)        
+        ctx.arc(xCenter, yCenter, radius, startAng, endAng);
+        ctx.stroke();        
     }
 
-    //fun drawText(x: Int, y: Int, txt: String, color: Int = BLACK, fontSize: Int? = null)
-    function drawText(x, y, width, height, color = colors.BLACK, thickness = 0){
-        ctx.lineWidth = thickness;
-        ctx.strokeStyle = color;
-        if (thickness == 0) ctx.fillRect(x, y, width, height)
-        else ctx.strokeRect(x, y, width, height)        
+    function drawText(x, y, txt, color = colors.BLACK, fontSize = 20){
+        ctx.fillStyle = color;
+        ctx.font = `${fontSize}px Arial`
+        ctx.fillText(txt, x, y); 
     }
 
     //fun drawImage(filename :String, x: Int, y: Int, width: Int =0, height: Int =0)
-    function drawImage(x, y, width, height, color = colors.BLACK, thickness = 0){
-        ctx.lineWidth = thickness;
-        ctx.strokeStyle = color;
-        if (thickness == 0) ctx.fillRect(x, y, width, height)
-        else ctx.strokeRect(x, y, width, height)        
-    }
-
     //fun onTime(delay :Int, handler :()->Unit)
     //fun onTimeProgress(period :Int, handler :(Long)->Unit) :TimerCtrl
     //fun onMouseDown(handler :(MouseEvent)->Unit)
